@@ -33,6 +33,15 @@ public class Author {
         this.country = country;
     }
 
+    public Author(int id, String name, String email, int age, String country, List<Book> booksWritten) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.country = country;
+        this.booksWritten = booksWritten;
+    }
+
     public int getId() {
         return id;
     }

@@ -87,6 +87,16 @@ public class Book {
         this.available = available;
     }
 
+    public Book(int id, String name, Genre genre, Author author, Card card, boolean available, List<Transaction> transactions) {
+        this.id = id;
+        this.name = name;
+        this.genre = genre;
+        this.author = author;
+        this.card = card;
+        this.available = available;
+        this.transactions = transactions;
+    }
+
     public List<Transaction> getTransactions() {
         return transactions;
     }
