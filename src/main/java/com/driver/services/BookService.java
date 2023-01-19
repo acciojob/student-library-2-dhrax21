@@ -1,6 +1,8 @@
 package com.driver.services;
 
+import com.driver.models.Author;
 import com.driver.models.Book;
+import com.driver.repositories.AuthorRepository;
 import com.driver.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +16,34 @@ public class BookService {
     @Autowired
     BookRepository bookRepository2;
 
+    @Autowired
+    AuthorRepository authorRepository2;
+
     public void createBook(Book book){
-        bookRepository2.save(book);
+        try{
+            int authId=book.getAuthor().getId();
+            Author author=authorRepository2.findById(authId).get();
+            author.getBooksWritten().add(book);
+            book.setAuthor(author);
+            bookRepository2.save(book);
+            authorRepository2.save(author);
+        }
+        catch (Exception e){
+            return;
+        }
     }
 
     public List<Book> getBooks(String genre, boolean available, String author){
-        List<Book> books = null; //find the elements of the list by yourself
-        return books;
+//        List<Book> books = bookRepository2.findAll(); //find the elements of the list by yourself
+
+        if((genre != null) && (author != null)){
+            return bookRepository2.findBooksByGenreAuthor(genre,author,available);
+        }else if(genre != null){
+            return bookRepository2.findBooksByGenre(genre,available);
+        }else if(author != null){
+            return bookRepository2.findBooksByAuthor(author,available);
+        }else{
+            return bookRepository2.findByAvailability(available);
+        }
     }
 }
