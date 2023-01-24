@@ -44,16 +44,6 @@ public class Transaction {
     public Transaction() {
     }
 
-//    public Transaction(int id, String transactionId, Card card, Book book, int fineAmount, boolean isIssueOperation, TransactionStatus transactionStatus, Date transactionDate) {
-//        this.id = id;
-//        this.transactionId = transactionId;
-//        this.card = card;
-//        this.book = book;
-//        this.fineAmount = fineAmount;
-//        this.isIssueOperation = isIssueOperation;
-//        this.transactionStatus = transactionStatus;
-//        this.transactionDate = transactionDate;
-//    }
 
     public int getId() {
         return id;

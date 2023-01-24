@@ -57,6 +57,7 @@ public class TransactionService {
 
         if(book==null || !book.isAvailable()){
             transaction.setTransactionStatus(TransactionStatus.FAILED);
+            transactionRepository5.save(transaction);
             throw new Exception("Book is either unavailable or not present");
         }
 
@@ -79,6 +80,7 @@ public class TransactionService {
         card.setBooks(bookList);
 
         bookRepository5.updateBook(book);
+        transaction.setTransactionStatus(TransactionStatus.SUCCESSFUL);
 
         transactionRepository5.save(transaction);
         return transaction.getTransactionId();  //return transactionId instead
@@ -113,15 +115,15 @@ public class TransactionService {
 
         bookRepository5.updateBook(book);
 
-        Transaction tr = new Transaction();
-        tr.setBook(transaction.getBook());
-        tr.setCard(transaction.getCard());
-        tr.setIssueOperation(false);
-        tr.setFineAmount(fine);
-        tr.setTransactionStatus(TransactionStatus.SUCCESSFUL);
+        Transaction transaction1 = new Transaction();
+        transaction1.setBook(transaction.getBook());
+        transaction1.setCard(transaction.getCard());
+        transaction1.setIssueOperation(false);
+        transaction1.setFineAmount(fine);
+        transaction1.setTransactionStatus(TransactionStatus.SUCCESSFUL);
 
-        transactionRepository5.save(tr);
+        transactionRepository5.save(transaction1);
 
-        return tr;
+        return transaction1;
     }
 }

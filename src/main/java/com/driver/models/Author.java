@@ -34,6 +34,7 @@ public class Author {
     }
 
     public Author(int id, String name, String email, int age, String country, List<Book> booksWritten) {
+        super();
         this.id = id;
         this.name = name;
         this.email = email;
