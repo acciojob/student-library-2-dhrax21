@@ -1,45 +1,47 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.driver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
-import java.util.Date;
-
 @Entity
 public class Student {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private int id;
-
-    @Column(unique = true)
+    @Column(
+            unique = true
+    )
     private String emailId;
     private String name;
-    private int age; // in case we want to check on the basis of age while issuing
-
+    private int age;
     private String country;
-
-    public Student() {
-    }
-
-    // alter table student add foreign key constraint card references Card(id)
-
     @OneToOne
-    @JoinColumn   // join this column to the primary key of Card table
-    @JsonIgnoreProperties("student")
+    @JoinColumn
+    @JsonIgnoreProperties({"student"})
     private Card card;
-
-
     @CreationTimestamp
     private Date createdOn;
-
     @UpdateTimestamp
     private Date updatedOn;
 
-
-
+    public Student() {
+    }
 
     public Student(String email, String name, int age, String country) {
         this.emailId = email;
@@ -47,8 +49,9 @@ public class Student {
         this.age = age;
         this.country = country;
     }
+
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -56,7 +59,7 @@ public class Student {
     }
 
     public String getEmailId() {
-        return emailId;
+        return this.emailId;
     }
 
     public void setEmailId(String emailId) {
@@ -64,7 +67,7 @@ public class Student {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -72,7 +75,7 @@ public class Student {
     }
 
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(int age) {
@@ -80,7 +83,7 @@ public class Student {
     }
 
     public String getCountry() {
-        return country;
+        return this.country;
     }
 
     public void setCountry(String country) {
@@ -88,7 +91,7 @@ public class Student {
     }
 
     public Card getCard() {
-        return card;
+        return this.card;
     }
 
     public void setCard(Card card) {
@@ -96,7 +99,7 @@ public class Student {
     }
 
     public Date getCreatedOn() {
-        return createdOn;
+        return this.createdOn;
     }
 
     public void setCreatedOn(Date createdOn) {
@@ -104,25 +107,14 @@ public class Student {
     }
 
     public Date getUpdatedOn() {
-        return updatedOn;
+        return this.updatedOn;
     }
 
     public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
     }
 
-    @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", email='" + emailId + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", country='" + country + '\'' +
-                ", createdOn=" + createdOn +
-                ", updatedOn=" + updatedOn +
-                '}';
+        return "Student{id=" + this.id + ", email='" + this.emailId + '\'' + ", name='" + this.name + '\'' + ", age=" + this.age + ", country='" + this.country + '\'' + ", createdOn=" + this.createdOn + ", updatedOn=" + this.updatedOn + '}';
     }
-
-
 }

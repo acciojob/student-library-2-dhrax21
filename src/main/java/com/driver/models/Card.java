@@ -1,39 +1,57 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.driver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-
 @Entity
 public class Card {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private int id;
-
-    @OneToOne(mappedBy = "card", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("card")
+    @OneToOne(
+            mappedBy = "card",
+            cascade = {CascadeType.ALL}
+    )
+    @JsonIgnoreProperties({"card"})
     private Student student;
-
     @CreationTimestamp
     private Date createdOn;
-
     @UpdateTimestamp
     private Date updatedOn;
-
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private CardStatus cardStatus;
-
-    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("card")
+    @OneToMany(
+            mappedBy = "card",
+            cascade = {CascadeType.ALL}
+    )
+    @JsonIgnoreProperties({"card"})
     private List<Book> books;
 
+    public Card() {
+        this.cardStatus = CardStatus.ACTIVATED;
+    }
+
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -41,7 +59,7 @@ public class Card {
     }
 
     public Student getStudent() {
-        return student;
+        return this.student;
     }
 
     public void setStudent(Student student) {
@@ -49,7 +67,7 @@ public class Card {
     }
 
     public Date getCreatedOn() {
-        return createdOn;
+        return this.createdOn;
     }
 
     public void setCreatedOn(Date createdOn) {
@@ -57,7 +75,7 @@ public class Card {
     }
 
     public Date getUpdatedOn() {
-        return updatedOn;
+        return this.updatedOn;
     }
 
     public void setUpdatedOn(Date updatedOn) {
@@ -65,7 +83,7 @@ public class Card {
     }
 
     public CardStatus getCardStatus() {
-        return cardStatus;
+        return this.cardStatus;
     }
 
     public void setCardStatus(CardStatus cardStatus) {
@@ -73,14 +91,10 @@ public class Card {
     }
 
     public List<Book> getBooks() {
-        return books;
+        return this.books;
     }
 
     public void setBooks(List<Book> books) {
         this.books = books;
-    }
-
-    public Card(){
-        this.cardStatus = CardStatus.ACTIVATED;
     }
 }

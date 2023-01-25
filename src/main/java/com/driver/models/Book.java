@@ -1,41 +1,55 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.driver.models;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.*;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Book {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private int id;
-
     private String name;
-
     @Enumerated(EnumType.STRING)
     private Genre genre;
-
     @ManyToOne
     @JoinColumn
-    @JsonIgnoreProperties("booksWritten")
+    @JsonIgnoreProperties({"booksWritten"})
     private Author author;
-
     @ManyToOne
     @JoinColumn
-    @JsonIgnoreProperties("books")
+    @JsonIgnoreProperties({"books"})
     private Card card;
-
-
-    @Column(columnDefinition = "TINYINT(1)")
+    @Column(
+            columnDefinition = "TINYINT(1)"
+    )
     private boolean available;
-
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("book")
+    @OneToMany(
+            mappedBy = "book",
+            cascade = {CascadeType.ALL}
+    )
+    @JsonIgnoreProperties({"book"})
     private List<Transaction> transactions;
 
+    public Book() {
+    }
 
     public Book(String name, Genre genre, Author author) {
         this.name = name;
@@ -44,9 +58,8 @@ public class Book {
         this.available = true;
     }
 
-
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -54,7 +67,7 @@ public class Book {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -62,7 +75,7 @@ public class Book {
     }
 
     public Genre getGenre() {
-        return genre;
+        return this.genre;
     }
 
     public void setGenre(Genre genre) {
@@ -70,7 +83,7 @@ public class Book {
     }
 
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
     public void setAuthor(Author author) {
@@ -78,7 +91,7 @@ public class Book {
     }
 
     public Card getCard() {
-        return card;
+        return this.card;
     }
 
     public void setCard(Card card) {
@@ -86,7 +99,7 @@ public class Book {
     }
 
     public boolean isAvailable() {
-        return available;
+        return this.available;
     }
 
     public void setAvailable(boolean available) {
@@ -94,14 +107,10 @@ public class Book {
     }
 
     public List<Transaction> getTransactions() {
-        return transactions;
+        return this.transactions;
     }
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
-
-    public Book() {
-    }
 }
-
