@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package com.driver.controller;
 
 import com.driver.models.Author;
@@ -16,17 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping({"/author"})
+@RequestMapping("/author")
 public class AuthorController {
-    @Autowired
-    AuthorService authorService;
 
-    public AuthorController() {
-    }
+	
+	@Autowired
+	AuthorService authorService;
+	
+	
+	@PostMapping("/")
+    public ResponseEntity<String> createAuthor(@RequestBody Author author){
 
-    @PostMapping({"/"})
-    public ResponseEntity<String> createAuthor(@RequestBody Author author) {
-        this.authorService.create(author);
-        return new ResponseEntity("the author added successfully", HttpStatus.CREATED);
+        authorService.create(author);
+        return new ResponseEntity<>("the author is successfully added to the system", HttpStatus.CREATED);
     }
+	
+	
+	
+	
+    //Write createAuthor API with required annotations
 }

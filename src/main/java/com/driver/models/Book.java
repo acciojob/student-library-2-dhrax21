@@ -1,49 +1,42 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package com.driver.models;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String name;
+
     @Enumerated(EnumType.STRING)
     private Genre genre;
+
     @ManyToOne
     @JoinColumn
-    @JsonIgnoreProperties({"booksWritten"})
+    @JsonIgnoreProperties("booksWritten")
     private Author author;
+
     @ManyToOne
     @JoinColumn
-    @JsonIgnoreProperties({"books"})
+    @JsonIgnoreProperties("books")
     private Card card;
+
+
     @Column(columnDefinition = "TINYINT(1)")
     private boolean available;
-    @OneToMany(mappedBy = "book", cascade = {CascadeType.ALL})
-    @JsonIgnoreProperties({"book"})
+
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("book")
     private List<Transaction> transactions;
 
-    public Book() {
-    }
-
+    
     public Book(String name, Genre genre, Author author) {
         this.name = name;
         this.genre = genre;
@@ -51,59 +44,64 @@ public class Book {
         this.available = true;
     }
 
+    
     public int getId() {
-        return this.id;
-    }
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return this.name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Genre getGenre() {
-        return this.genre;
-    }
+	public Genre getGenre() {
+		return genre;
+	}
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
 
-    public Author getAuthor() {
-        return this.author;
-    }
+	public Author getAuthor() {
+		return author;
+	}
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
 
-    public Card getCard() {
-        return this.card;
-    }
+	public Card getCard() {
+		return card;
+	}
 
-    public void setCard(Card card) {
-        this.card = card;
-    }
+	public void setCard(Card card) {
+		this.card = card;
+	}
 
-    public boolean isAvailable() {
-        return this.available;
-    }
+	public boolean isAvailable() {
+		return available;
+	}
 
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
 
-    public List<Transaction> getTransactions() {
-        return this.transactions;
-    }
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
 
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+
+	public Book() {
     }
 }
+

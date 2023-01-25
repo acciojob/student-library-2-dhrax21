@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package com.driver.services;
 
 import com.driver.models.Student;
@@ -12,32 +7,37 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class StudentService {
+
+
     @Autowired
     CardService cardService4;
+
     @Autowired
     StudentRepository studentRepository4;
 
-    public StudentService() {
+    public Student getDetailsByEmail(String email){
+        Student student = studentRepository4.findByEmailId(email);
+
+        return student;
     }
 
-    public Student getDetailsByEmail(String email) {
-        return this.studentRepository4.findByEmailId(email);
+    public Student getDetailsById(int id){
+        Student student = studentRepository4.findById(id).get();
+
+        return student;
     }
 
-    public Student getDetailsById(int id) {
-        return (Student)this.studentRepository4.findById(id).get();
+    public void createStudent(Student student){
+    	studentRepository4.save(student);  
     }
 
-    public void createStudent(Student student) {
-        this.cardService4.createAndReturn(student);
+    public void updateStudent(Student student){
+    	studentRepository4.updateStudentDetails(student);
     }
 
-    public void updateStudent(Student student) {
-        this.studentRepository4.updateStudentDetails(student);
-    }
-
-    public void deleteStudent(int id) {
-        this.cardService4.deactivateCard(id);
-        this.studentRepository4.deleteById(id);
+    public void deleteStudent(int id){
+        //Delete student and deactivate corresponding card
+    	   cardService4.deactivateCard(id);
+           studentRepository4.deleteCustom(id);
     }
 }

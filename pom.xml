@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -15,6 +15,8 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<maven.compiler.source>18</maven.compiler.source>
+		<maven.compiler.target>18</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,20 +47,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 
-<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.hibernate.javax.persistence</groupId>-->
-<!--			<artifactId>hibernate-jpa-2.1-api</artifactId>-->
-<!--			<version>1.0.2</version>-->
-<!--		</dependency>-->
-
-<!--		&lt;!&ndash;https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.hibernate</groupId>-->
-<!--			<artifactId>hibernate-annotations</artifactId>-->
-<!--			<version>3.5.6-Final</version>-->
-<!--		</dependency>-->
-
+		<!--		<dependency>-->
+		<!--			<groupId>javax.persistence</groupId>-->
+		<!--			<artifactId>persistence-api</artifactId>-->
+		<!--			<version>1.0.2</version>-->
+		<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.hibernate</groupId>-->
+		<!--			<artifactId>hibernate-annotations</artifactId>-->
+		<!--			<version>3.5.6-Final</version>-->
+		<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-maven-plugin</artifactId>
@@ -73,14 +71,6 @@
 			<artifactId>junit-dep</artifactId>
 			<version>4.8.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.24</version>
-			<scope>provided</scope>
-		</dependency>
-
 	</dependencies>
 
 	<build>
