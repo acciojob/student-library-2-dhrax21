@@ -5,6 +5,7 @@
 
 package com.driver.services;
 
+import com.driver.models.Author;
 import com.driver.models.Book;
 import com.driver.models.Genre;
 import com.driver.repositories.AuthorRepository;
@@ -18,13 +19,25 @@ public class BookService {
     @Autowired
     BookRepository bookRepository2;
     @Autowired
-    AuthorRepository authorRepository;
+    AuthorRepository authorRepository1;
 
     public BookService() {
     }
 
     public void createBook(Book book) {
-        this.bookRepository2.save(book);
+
+        int authorId = book.getAuthor().getId();
+
+        Author author =  authorRepository1.findById(authorId).get();
+
+        //Update the bookList written by Author
+        author.getBooksWritten().add(book);
+
+        //Updated the book
+        book.setAuthor(author);
+        //bookRepository2.save(book);
+        bookRepository2.save(book);
+        authorRepository1.save(author);
     }
 
     public List<Book> getBooks(Genre genre, boolean available, String author) {

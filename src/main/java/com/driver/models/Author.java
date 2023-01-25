@@ -18,21 +18,14 @@ import javax.persistence.OneToMany;
 @Entity
 public class Author {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @Column(
-            unique = true
-    )
+    @Column(unique = true)
     private String email;
     private int age;
     private String country;
-    @OneToMany(
-            mappedBy = "author",
-            cascade = {CascadeType.ALL}
-    )
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.ALL})
     @JsonIgnoreProperties({"author"})
     private List<Book> booksWritten;
 

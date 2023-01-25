@@ -20,13 +20,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(
-            unique = true
-    )
+    @Column(unique = true)
     private String emailId;
     private String name;
     private int age;

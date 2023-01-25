@@ -22,9 +22,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     @Enumerated(EnumType.STRING)
@@ -37,14 +35,9 @@ public class Book {
     @JoinColumn
     @JsonIgnoreProperties({"books"})
     private Card card;
-    @Column(
-            columnDefinition = "TINYINT(1)"
-    )
+    @Column(columnDefinition = "TINYINT(1)")
     private boolean available;
-    @OneToMany(
-            mappedBy = "book",
-            cascade = {CascadeType.ALL}
-    )
+    @OneToMany(mappedBy = "book", cascade = {CascadeType.ALL})
     @JsonIgnoreProperties({"book"})
     private List<Transaction> transactions;
 

@@ -23,14 +23,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 public class Card {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne(
-            mappedBy = "card",
-            cascade = {CascadeType.ALL}
-    )
+    @OneToOne(mappedBy = "card", cascade = {CascadeType.ALL})
     @JsonIgnoreProperties({"card"})
     private Student student;
     @CreationTimestamp
@@ -39,10 +34,7 @@ public class Card {
     private Date updatedOn;
     @Enumerated(EnumType.STRING)
     private CardStatus cardStatus;
-    @OneToMany(
-            mappedBy = "card",
-            cascade = {CascadeType.ALL}
-    )
+    @OneToMany(mappedBy = "card", cascade = {CascadeType.ALL})
     @JsonIgnoreProperties({"card"})
     private List<Book> books;
 

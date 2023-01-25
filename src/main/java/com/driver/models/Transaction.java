@@ -22,9 +22,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 public class Transaction {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String transactionId = UUID.randomUUID().toString();
     @ManyToOne
@@ -36,9 +34,7 @@ public class Transaction {
     @JsonIgnoreProperties({"transactions"})
     private Book book;
     private int fineAmount;
-    @Column(
-            columnDefinition = "TINYINT(1)"
-    )
+    @Column(columnDefinition = "TINYINT(1)")
     private boolean isIssueOperation;
     @Enumerated(EnumType.STRING)
     private TransactionStatus transactionStatus;
