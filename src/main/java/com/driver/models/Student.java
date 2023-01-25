@@ -32,32 +32,21 @@ public class Student {
     private Card card;
 
 
-    public Student(String email, String name, int age, String country) {
-        this.emailId = email;
-        this.name = name;
-        this.age = age;
-        this.country = country;
-    }
-
     @CreationTimestamp
     private Date createdOn;
 
     @UpdateTimestamp
     private Date updatedOn;
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", email='" + emailId + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", country='" + country + '\'' +
-                ", createdOn=" + createdOn +
-                ", updatedOn=" + updatedOn +
-                '}';
-    }
 
+
+
+    public Student(String email, String name, int age, String country) {
+        this.emailId = email;
+        this.name = name;
+        this.age = age;
+        this.country = country;
+    }
     public int getId() {
         return id;
     }
@@ -121,4 +110,19 @@ public class Student {
     public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", email='" + emailId + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                ", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +
+                '}';
+    }
+
+
 }

@@ -28,29 +28,20 @@ public class Transaction {
 
     private int fineAmount;
 
-    @Column(columnDefinition = "TINYINT(1)")
-    private boolean isIssueOperation;
-
-    @Enumerated(value = EnumType.STRING)
-    private TransactionStatus transactionStatus;
-
-    @CreationTimestamp
-    private Date transactionDate;
-
-    public String getTransactionId() {
-        return transactionId;
-    }
-
-    public Transaction() {
-    }
-
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
     }
 
     public Card getCard() {
@@ -81,8 +72,8 @@ public class Transaction {
         return isIssueOperation;
     }
 
-    public void setIssueOperation(boolean issueOperation) {
-        isIssueOperation = issueOperation;
+    public void setIssueOperation(boolean isIssueOperation) {
+        this.isIssueOperation = isIssueOperation;
     }
 
     public TransactionStatus getTransactionStatus() {
@@ -100,5 +91,14 @@ public class Transaction {
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
     }
+
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean isIssueOperation;
+
+    @Enumerated(value = EnumType.STRING)
+    private TransactionStatus transactionStatus;
+
+    @CreationTimestamp
+    private Date transactionDate;
 }
 

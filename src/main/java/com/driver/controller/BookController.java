@@ -1,6 +1,7 @@
 package com.driver.controller;
 
 import com.driver.models.Book;
+import com.driver.models.Genre;
 import com.driver.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class BookController {
                                    @RequestParam(value = "author", required = false) String author){
 
         //find the elements of the list by yourself
-        List<Book> bookList = bookService.getBooks(genre,available,author);
+        List<Book> bookList = bookService.getBooks(Genre.valueOf(genre),available,author);
         return new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 }
