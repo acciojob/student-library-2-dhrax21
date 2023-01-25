@@ -36,72 +36,63 @@ public class Book {
     @JsonIgnoreProperties("book")
     private List<Transaction> transactions;
 
-    
-    public Book(String name, Genre genre, Author author) {
+    public Book() {
+    }
+
+    public Book(String name, Genre genre, Author author){
         this.name = name;
         this.genre = genre;
         this.author = author;
         this.available = true;
     }
 
-    
     public int getId() {
-		return id;
-	}
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Genre getGenre() {
+        return genre;
+    }
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public boolean isAvailable() {
+        return available;
+    }
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
 
-	public Genre getGenre() {
-		return genre;
-	}
+    public Card getCard() {
+        return card;
+    }
+    public void setCard(Card card) {
+        this.card = card;
+    }
 
-	public void setGenre(Genre genre) {
-		this.genre = genre;
-	}
+    public Author getAuthor() {
+        return author;
+    }
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
-	public Author getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(Author author) {
-		this.author = author;
-	}
-
-	public Card getCard() {
-		return card;
-	}
-
-	public void setCard(Card card) {
-		this.card = card;
-	}
-
-	public boolean isAvailable() {
-		return available;
-	}
-
-	public void setAvailable(boolean available) {
-		this.available = available;
-	}
-
-	public List<Transaction> getTransactions() {
-		return transactions;
-	}
-
-	public void setTransactions(List<Transaction> transactions) {
-		this.transactions = transactions;
-	}
-
-	public Book() {
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }
 
